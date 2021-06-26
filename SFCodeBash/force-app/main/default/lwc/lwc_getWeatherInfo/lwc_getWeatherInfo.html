@@ -1,0 +1,58 @@
+<template>
+    <lightning-card>
+        <lightning-layout>
+            <lightning-layout-item size="1" medium-device-size="3" padding="around-small">
+                <lightning-card icon-name="standard:topic" title="humidity">
+                    <div class="slds-align_absolute-center color-blue">
+                        <template if:true={result}>
+                            {gethumidity}
+                        </template>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" medium-device-size="3" padding="around-small">
+                <lightning-card icon-name="utility:flow" title="weather condition">
+                    <div class="slds-align_absolute-center color-grey">
+                        <template if:true={result}>
+                            <img src={getimages}>
+                        </template>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" medium-device-size="3" padding="around-small">
+                <lightning-card icon-name="standard:calibration" title="wind Speed">
+                    <div class="slds-align_absolute-center color-green">
+                        <template if:true={result}>
+                            {getwindSpeed}
+                        </template>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" medium-device-size="3" padding="around-small">
+                <lightning-card icon-name="standard:calibration" title="temperature">
+                    <div class="slds-align_absolute-center color-green">
+                        <template if:true={result}>
+                            {gettemperature}
+                        </template>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-map map-markers={mapMarkers} zoom-level={zoomLevel}>
+        </lightning-map>
+        <template if:true={objectApiName}>
+            <lightning-card>
+                <lightning-button variant="brand" label="SEND EMAIL TO ACCOUNT CONTACT LIST" title="SEND EMAIL TO ACCOUNT CONTACT LIST" onclick={sendEmailContacts}
+                    class="slds-m-left_x-small"></lightning-button>
+            </lightning-card>
+
+        </template>
+        <template if:true={isUser}>
+            <lightning-card>
+                <lightning-button variant="brand" label="SEND EMAIL TO ORG USERS" title="SEND EMAIL TO ORG USERS" onclick={sendEmailUsers}
+                    class="slds-m-left_x-small"></lightning-button>
+            </lightning-card>
+            
+        </template>
+    </lightning-card>
+</template>
